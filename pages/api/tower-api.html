@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Tower API</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body { margin: 0; padding: 0; }
+    </style>
+  </head>
+  <body>
+    <redoc
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           >
+    </redoc>
+
+    <script src="../../_static/redoc.js"></script>
+    
+    <script type="application/json" id="spec">
+    {"openapi": "3.1.0", "info": {"title": "FastAPI", "version": "0.1.0"}, "paths": {"/send_message": {"post": {"summary": "Send Message", "operationId": "send_message_send_message_post", "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/SendMessageRequest"}}}, "required": true}, "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/SendMessageResponse"}}}}, "422": {"description": "Validation Error", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/HTTPValidationError"}}}}}}}, "/": {"get": {"summary": "Read Root", "operationId": "read_root__get", "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {}}}}}}}}, "components": {"schemas": {"HTTPValidationError": {"properties": {"detail": {"items": {"$ref": "#/components/schemas/ValidationError"}, "type": "array", "title": "Detail"}}, "type": "object", "title": "HTTPValidationError"}, "SendMessageRequest": {"properties": {"taskId": {"type": "string", "title": "Task ID", "description": "The ID of the task on chain."}, "message": {"type": "string", "title": "Message", "description": "The message to send to the host."}}, "type": "object", "required": ["taskId"], "title": "SendMessageRequest"}, "SendMessageResponse": {"properties": {"success": {"type": "boolean", "title": "Success", "description": "Whether the message was sent successfully."}, "msg": {"type": "string", "title": "Message", "description": "The message of the reply of the host."}}, "type": "object", "required": ["success"], "title": "SendMessageResponse"}, "ValidationError": {"properties": {"loc": {"items": {"anyOf": [{"type": "string"}, {"type": "integer"}]}, "type": "array", "title": "Location"}, "msg": {"type": "string", "title": "Message"}, "type": {"type": "string", "title": "Error Type"}}, "type": "object", "required": ["loc", "msg", "type"], "title": "ValidationError"}}}}
+    </script>
+    
+    <script>
+        
+        var spec = JSON.parse(document.getElementById("spec").innerHTML);
+        
+        Redoc.init(spec);
+    </script>
+  </body>
+</html>

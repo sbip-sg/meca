@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Developer Guide &mdash; MECAnywhere  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tower Guide" href="tower_guide.html" />
+    <link rel="prev" title="Host Guide" href="host_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            MECAnywhere
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme/quick-start.html">Quick Start (local)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../api/api.html">API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="guides.html">User Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="client_guide.html">Client Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="host_guide.html">Host Guide</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Task Developer Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#additional-non-util-functions">Additional non-util functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#payment">Payment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tower_guide.html">Tower Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_tasks.html">Building tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment.html">Deployment</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/sbip-sg/pymeca">Pymeca github</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://sbip-sg.github.io/pymeca/">Pymeca documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/sbip-sg/meca">Meca github</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://sbip-sg.github.io/meca/index.html">Meca documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/sbip-sg/meca_desktop">Meca Desktop github</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://sbip-sg.github.io/meca_desktop/index.html">Meca Desktop documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.youtube.com/watch?v=MDzbEvTyIgQ">Youtube</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1mgZ0EfhlHWNPjgXgG-MpgPV32_b0Qx_g/view?usp=sharing">Technical guide video</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">MECAnywhere</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="guides.html">User Guides</a></li>
+      <li class="breadcrumb-item active">Task Developer Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/pages/user_guides/task_dev_guide.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="task-developer-guide">
+<h1>Task Developer Guide<a class="headerlink" href="#task-developer-guide" title="Link to this heading"></a></h1>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="#introduction">Introduction</a></p></li>
+<li><p><a class="reference external" href="#installation">Installation</a></p></li>
+<li><p><a class="reference external" href="#usage">Usage</a></p></li>
+<li><p><a class="reference external" href="#functions">Functions</a></p></li>
+<li><p><a class="reference external" href="#payment">Payment</a></p></li>
+</ol>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>The task developer is responsible for creating tasks that can be
+executed by hosts. This guide will walk you through the process of
+setting up and managing a task developer using the CLI. To see how to
+develop tasks, check out <a class="reference internal" href="example_tasks.html#example-tasks"><span class="std std-ref">Building tasks</span></a>.</p>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>To install the task developer, you will need to have Docker installed
+on your machine. You can download Docker from the <a class="reference external" href="https://www.docker.com/get-started">official Docker
+website</a>.</p></li>
+<li><p>Start and serve the task developer container. (see <a class="reference external" href="https://github.com/sbip-sg/meca/blob/main/pymeca-actors/README.md">pymeca-actors
+readme</a>)</p></li>
+<li><p>Ensure that you have a valid connection to IPFS for uploading. (see
+<a class="reference external" href="https://docs.ipfs.tech/install/">IPFS installation docs</a>) You can also use the docker image
+from IPFS following instructions in pymeca-actors readme.</p></li>
+</ol>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<p>The task developer CLI will look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PS</span> <span class="o">&gt;</span> <span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">rm</span> <span class="o">-</span><span class="n">v</span> <span class="o">&lt;</span><span class="n">ABSOLUTE_PATH_TO_FOLDER</span><span class="o">&gt;</span><span class="p">:</span><span class="o">/</span><span class="n">build</span> <span class="n">mock_actor</span> <span class="n">mock_task_dev</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Started</span> <span class="n">task</span> <span class="n">dev</span> <span class="k">with</span> <span class="n">address</span><span class="p">:</span> <span class="mh">0x9165625649F7aa71F2afEd65BC367d8b6bCdA025</span>
+
+<span class="mf">0.</span> <span class="n">delete_task</span>
+<span class="mf">1.</span> <span class="n">get_my_tasks</span>
+<span class="mf">2.</span> <span class="n">register_task</span>
+<span class="mf">3.</span> <span class="n">register_task_cid</span>
+<span class="mf">4.</span> <span class="n">update_task_fee</span>
+<span class="mf">5.</span> <span class="n">update_task_owner</span>
+<span class="mf">6.</span> <span class="n">update_task_size</span>
+<span class="mf">7.</span> <span class="n">get_sha256_from_cid</span>
+<span class="mf">8.</span> <span class="n">add_folder_to_ipfs</span>
+<span class="n">x</span><span class="o">.</span> <span class="n">Exit</span>
+<span class="n">Enter</span> <span class="n">action</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>The CLI provides options to manage your tasks. <code class="docutils literal notranslate"><span class="pre">add_folder_to_ipfs</span></code> to
+upload a local folder to the IPFS node specified in the env variables.
+Then <code class="docutils literal notranslate"><span class="pre">register_task</span></code> using the IPFS CID.</p>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://sbip-sg.github.io/pymeca/autoapi/pymeca/task/index.html">https://sbip-sg.github.io/pymeca/autoapi/pymeca/task/index.html</a></p>
+<section id="additional-non-util-functions">
+<h3>Additional non-util functions<a class="headerlink" href="#additional-non-util-functions" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul>
+<li><dl>
+<dt>add_folder_to_ipfs(folder_path: str) -&gt; str:</dt><dd><p>Adds a local folder on your host machine to IPFS.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>folder_path: <code class="docutils literal notranslate"><span class="pre">/build/&lt;folder_name_on_local_device&gt;</span></code>.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The result of adding a folder on IPFS, which is the metadata of each file in the folder and the folder itself.
+You can then get the CID of the folder from the hash field of the metadata of the folder.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="payment">
+<h2>Payment<a class="headerlink" href="#payment" title="Link to this heading"></a></h2>
+<p>Payment for blockchain transactions and fees are done using the account
+associated with the private key in the environment variables.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="host_guide.html" class="btn btn-neutral float-left" title="Host Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tower_guide.html" class="btn btn-neutral float-right" title="Tower Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Junxue.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

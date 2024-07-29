@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Pymeca Actors Server API</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body { margin: 0; padding: 0; }
+    </style>
+  </head>
+  <body>
+    <redoc
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           >
+    </redoc>
+
+    <script src="../../_static/redoc.js"></script>
+    
+    <script type="application/json" id="spec">
+    {"openapi": "3.1.0", "info": {"title": "FastAPI", "version": "0.1.0"}, "paths": {"/": {"get": {"summary": "Home", "operationId": "home__get", "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {}}}}}}}, "/exec/{function_name}": {"post": {"summary": "Entry Point", "operationId": "entry_point_exec__function_name__post", "parameters": [{"name": "function_name", "in": "path", "required": true, "schema": {"type": "string", "title": "Function Name"}}], "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {}}}}, "422": {"description": "Validation Error", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/HTTPValidationError"}}}}}}}, "/init_actor/{actor_name}": {"post": {"summary": "Init Actor", "operationId": "init_actor_init_actor__actor_name__post", "parameters": [{"name": "actor_name", "in": "path", "required": true, "schema": {"type": "string", "title": "Actor Name"}}], "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {"type": "boolean", "title": "Response Init Actor Init Actor  Actor Name  Post"}}}}, "422": {"description": "Validation Error", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/HTTPValidationError"}}}}}}}, "/close_actor": {"post": {"summary": "Close Actor", "operationId": "close_actor_close_actor_post", "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {}}}}}}}, "/get_account": {"get": {"summary": "Get Account", "operationId": "get_account_get_account_get", "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {"type": "string", "title": "Response Get Account Get Account Get"}}}}}}}, "/cid_from_sha256/{sha256}": {"get": {"summary": "Cid From Sha256", "operationId": "cid_from_sha256_cid_from_sha256__sha256__get", "parameters": [{"name": "sha256", "in": "path", "required": true, "schema": {"type": "string", "title": "Sha256"}}], "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {"type": "string", "title": "Response Cid From Sha256 Cid From Sha256  Sha256  Get"}}}}, "422": {"description": "Validation Error", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/HTTPValidationError"}}}}}}}, "/send_task_on_blockchain": {"post": {"summary": "Send Task", "operationId": "send_task_send_task_on_blockchain_post", "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/SendTaskOnBlockchainArgs"}}}, "required": true}, "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {}}}}, "422": {"description": "Validation Error", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/HTTPValidationError"}}}}}}}, "/wait_for_task": {"post": {"summary": "Wait For My Task", "operationId": "wait_for_my_task_wait_for_task_post", "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/WaitForTaskArgs"}}}, "required": true}, "responses": {"200": {"description": "Successful Response", "content": {"application/json": {"schema": {}}}}, "422": {"description": "Validation Error", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/HTTPValidationError"}}}}}}}}, "components": {"schemas": {"HTTPValidationError": {"properties": {"detail": {"items": {"$ref": "#/components/schemas/ValidationError"}, "type": "array", "title": "Detail"}}, "type": "object", "title": "HTTPValidationError"}, "SendTaskOnBlockchainArgs": {"properties": {"ipfs_sha256": {"type": "string", "title": "Ipfs Sha256"}, "host_address": {"type": "string", "title": "Host Address"}, "tower_address": {"type": "string", "title": "Tower Address"}, "input_hash": {"type": "string", "title": "Input Hash"}, "use_sgx": {"type": "boolean", "title": "Use Sgx", "default": false}}, "type": "object", "required": ["ipfs_sha256", "host_address", "tower_address", "input_hash"], "title": "SendTaskOnBlockchainArgs"}, "ValidationError": {"properties": {"loc": {"items": {"anyOf": [{"type": "string"}, {"type": "integer"}]}, "type": "array", "title": "Location"}, "msg": {"type": "string", "title": "Message"}, "type": {"type": "string", "title": "Error Type"}}, "type": "object", "required": ["loc", "msg", "type"], "title": "ValidationError"}, "WaitForTaskArgs": {"properties": {"tower_address": {"type": "string", "title": "Tower Address"}}, "type": "object", "required": ["tower_address"], "title": "WaitForTaskArgs"}}}}
+    </script>
+    
+    <script>
+        
+        var spec = JSON.parse(document.getElementById("spec").innerHTML);
+        
+        Redoc.init(spec);
+    </script>
+  </body>
+</html>

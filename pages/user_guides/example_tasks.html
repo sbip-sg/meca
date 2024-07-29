@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building tasks &mdash; MECAnywhere  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Deployment" href="../deployment.html" />
+    <link rel="prev" title="Tower Guide" href="tower_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            MECAnywhere
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme/quick-start.html">Quick Start (local)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../api/api.html">API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="guides.html">User Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="client_guide.html">Client Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="host_guide.html">Host Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_dev_guide.html">Task Developer Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower_guide.html">Tower Guide</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Building tasks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#building-a-task-container">Building a task container</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#app-that-handles-requests">1. App that handles requests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dockerfile">2. Dockerfile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config-json-fields">3. config.json fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#describe-your-task">4. Describe your task</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-and-uploading-the-container">5. Using and uploading the container</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment.html">Deployment</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/sbip-sg/pymeca">Pymeca github</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://sbip-sg.github.io/pymeca/">Pymeca documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/sbip-sg/meca">Meca github</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://sbip-sg.github.io/meca/index.html">Meca documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/sbip-sg/meca_desktop">Meca Desktop github</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://sbip-sg.github.io/meca_desktop/index.html">Meca Desktop documentation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.youtube.com/watch?v=MDzbEvTyIgQ">Youtube</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1mgZ0EfhlHWNPjgXgG-MpgPV32_b0Qx_g/view?usp=sharing">Technical guide video</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">MECAnywhere</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="guides.html">User Guides</a></li>
+      <li class="breadcrumb-item active">Building tasks</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/pages/user_guides/example_tasks.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="building-tasks">
+<span id="example-tasks"></span><h1>Building tasks<a class="headerlink" href="#building-tasks" title="Link to this heading"></a></h1>
+<p>This guide will walk you through the development of a task container that a task developer can upload.
+Example tasks are provided in <a class="reference external" href="https://github.com/sbip-sg/meca/tree/main/example-tasks">example tasks README</a>.
+Each folder must contain all of the files listed in the structure below.</p>
+<p>Each folder must contain all of the files listed in the structure as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">folder</span>
+  <span class="o">-</span> <span class="n">Dockerfile</span>
+  <span class="o">-</span> <span class="n">src</span>
+  <span class="o">-</span> <span class="n">description</span><span class="o">.</span><span class="n">txt</span>
+  <span class="o">-</span> <span class="n">name</span><span class="o">.</span><span class="n">txt</span>
+  <span class="o">-</span> <span class="n">example_input</span><span class="o">.</span><span class="n">bin</span>
+  <span class="o">-</span> <span class="n">example_output</span><span class="o">.</span><span class="n">bin</span>
+  <span class="o">-</span> <span class="n">config</span><span class="o">.</span><span class="n">json</span>
+
+</pre></div>
+</div>
+<section id="building-a-task-container">
+<h2>Building a task container<a class="headerlink" href="#building-a-task-container" title="Link to this heading"></a></h2>
+<section id="app-that-handles-requests">
+<h3>1. App that handles requests<a class="headerlink" href="#app-that-handles-requests" title="Link to this heading"></a></h3>
+<p>The app will receive a post request at <code class="docutils literal notranslate"><span class="pre">localhost:8080\</span></code> and return the result. The input format is any json object and the output format is a string. After the app starts up, print <code class="docutils literal notranslate"><span class="pre">&quot;meca-init-done&quot;</span></code>.</p>
+<p>For example, we create a flask app:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>  <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span>
+  <span class="kn">import</span> <span class="nn">json</span>
+
+  <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+  <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+  <span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">json</span>
+      <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">]</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;meca-init-done&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="dockerfile">
+<h3>2. Dockerfile<a class="headerlink" href="#dockerfile" title="Link to this heading"></a></h3>
+<p>Expose port 8080 to the app of the request handler.</p>
+<p>Following the flask app created above, the Dockerfile may look like this:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.9-slim</span>
+
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+
+<span class="k">COPY</span><span class="w"> </span>flask_app.py<span class="w"> </span>flask_app.py
+
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">8080</span>
+
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;flask&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--app&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;flask_app.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--host=0.0.0.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--port=8080&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="config-json-fields">
+<h3>3. config.json fields<a class="headerlink" href="#config-json-fields" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">config.json</span></code> file contains the configuration of the task, which it will use to build its container, with the following default fields:</p>
+<p>DEFAULTS:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;cpu&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mem&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;use_gpu&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gpu_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>field</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">resource.cpu</span></code></p></td>
+<td><p>The number of CPUs to allocate to the task. This field will limit the users that can run the task to those with the same or more CPUs available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">resource.mem</span></code></p></td>
+<td><p>The amount of memory to allocate to the task in MB. This field will limit the users that can run the task to those with the same or more memory available.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">resource.use_gpu</span></code></p></td>
+<td><p>Whether the task requires a GPU to run.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">resource.gpu_count</span></code></p></td>
+<td><p>The number of GPUs to allocate to the task, if <code class="docutils literal notranslate"><span class="pre">use_gpu</span></code> is true.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="describe-your-task">
+<h3>4. Describe your task<a class="headerlink" href="#describe-your-task" title="Link to this heading"></a></h3>
+<p>Fill in the <code class="docutils literal notranslate"><span class="pre">description.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">name.txt</span></code> files with the description and name of your task.
+In the <code class="docutils literal notranslate"><span class="pre">example_input.bin</span></code> and <code class="docutils literal notranslate"><span class="pre">example_output.bin</span></code> files, provide examples of the input and output of your task exactly as they are read in the body of a HTTP request and reply.</p>
+</section>
+<section id="using-and-uploading-the-container">
+<h3>5. Using and uploading the container<a class="headerlink" href="#using-and-uploading-the-container" title="Link to this heading"></a></h3>
+<p>Build the image and push it to IPFS via the MECA CLI as a task developer. You will be compensated with the task fee that you list for each task executed by a MECA client.</p>
+<p>Test your task folder structure by running the test function in the MECA CLI.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tower_guide.html" class="btn btn-neutral float-left" title="Tower Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../deployment.html" class="btn btn-neutral float-right" title="Deployment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Junxue.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
